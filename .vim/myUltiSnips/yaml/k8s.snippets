@@ -1,0 +1,70 @@
+snippet /^ns/ "Namespace" r
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${1}
+${0}
+endsnippet
+
+snippet /^pod/ "Pod" r
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ${1:waiter}
+  namespace: ${2:default}
+  labels:
+    app: myapp
+spec:
+  restartPolicy: Never
+  containers:
+  moo:
+  - name: waiter
+    image: "alpine:3.3"
+    command: ["/bin/sleep","9000"]
+${0}
+endsnippet
+
+snippet /^rq/ "ResourceQuota" r
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: ${1:quota}
+  namespace: ${2:default}
+spec:
+  hard:
+    pods: "${3:4}"
+    cpu: "${4:1}"
+    memory: ${5:1Gi}
+${0}
+endsnippet
+
+snippet /^role/ "Role" r
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ${1:pod-reader}
+  namespace: ${2:default}
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+${0}
+endsnippet
+
+
+snippet /^rb/ "RoleBinding" r
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ${1:read-pods}
+  namespace: ${2:default}
+subjects:
+- kind: User
+  name: ${3:alice}
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: ${4:pod-reader}
+  apiGroup: rbac.authorization.k8s.io
+${0}
+endsnippet

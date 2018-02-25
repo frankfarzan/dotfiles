@@ -50,28 +50,47 @@ call vundle#end()
 filetype plugin indent on " Filetype auto-detection
 syntax on " Syntax highlighting
 
-" Formatting
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab " use spaces instead of tabs.
-set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
-set shiftround " tab / shifting moves to closest tabstop.
-set autoindent " Match indents on new lines.
-set smartindent " Intellegently dedent / indent new lines based on rules.
+set bg=dark                     " I like dark backgrounds
+set ttyfast                     " Indicate fast terminal conn for faster redraw
+set laststatus=1                " Show status line iff 2+ windows
+set modeline                    " Allow file-embedded modelines
+set hlsearch                    " Highlight search terms
+set showcmd                     " Show last command
+set completeopt=menuone         " Show insertion menu for completions
+set list                        " Show listchars
+set tabstop=4                   " Tab width
+set shiftwidth=4                " How much to shift text
+set expandtab                   " Tabs are converted to spaces
+set ai                          " Auto-indent
+syn on                          " Syntax highlighting
+set textwidth=78                " Default text width
+set backspace=indent,eol,start  " Makes backspace key more powerful
+set autowrite                   " Automatically save before :next, :make etc.
 
-" Make search more sane
-set ignorecase " case insensitive search
-set smartcase " If there are uppercase letters, become case-sensitive.
-set incsearch " live incremental searching
-set showmatch " live match highlighting
-set hlsearch " highlight matches
-set gdefault " use the `g` flag by default.
+" markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" go
+au FileType go setl tabstop=4
+au FileType go setl shiftwidth=4
+au FileType go setl textwidth=1000
+au FileType go setl number
+au FileType go setl nolist
+
+" yaml
+au FileType yaml setl indentkeys-=<:>
+au FileType yaml setl tabstop=2
+au FileType yaml setl shiftwidth=2
+au FileType yaml setl expandtab
+au FileType yaml setl number
 
 " Bindings for easy split nav
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" New files should open in insert mode
+au BufNewFile * startinsert
 
 colorscheme desert
