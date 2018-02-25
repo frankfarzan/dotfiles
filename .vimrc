@@ -57,7 +57,6 @@ set modeline                    " Allow file-embedded modelines
 set hlsearch                    " Highlight search terms
 set showcmd                     " Show last command
 set completeopt=menuone         " Show insertion menu for completions
-set list                        " Show listchars
 set tabstop=4                   " Tab width
 set shiftwidth=4                " How much to shift text
 set expandtab                   " Tabs are converted to spaces
