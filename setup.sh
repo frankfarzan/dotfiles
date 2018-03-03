@@ -1,7 +1,13 @@
 #!/usr/bin/env sh
-ln -s $(pwd)/.profile ~/.profile
-ln -s $(pwd)/.zshrc ~/.zshrc
-ln -s $(pwd)/.vimrc ~/.vimrc
-ln -s $(pwd)/.tmux.conf ~/.tmux.conf
-mkdir -p ~/.vim
-ln -s $(pwd)/.vim/myUltiSnips ~/.vim/myUltiSnips
+set -eu
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+configs=(.zshrc .vimrc .tmux.conf .vim/myUltiSnips .oh-my-zsh/custom)
+backup=~/.configs.backup/$(date +%s)
+echo $backup
+mkdir -p $backup
+
+for i in ${configs[@]}; do
+	cp -r ~/$i $backup
+	ln -sFf $dir/$i ~/$i
+done
