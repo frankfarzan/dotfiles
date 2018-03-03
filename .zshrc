@@ -70,6 +70,8 @@ export EDITOR='vim'
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+# Sane backspace behavior in vim mode
+bindkey "^?" backward-delete-char
 
 # history
 bindkey '^R' history-incremental-search-backward
@@ -78,4 +80,6 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "\e[A" history-beginning-search-backward-end
 bindkey "\e[B" history-beginning-search-forward-end
+
+
 
