@@ -49,9 +49,21 @@ ZSH_THEME="frankfarzan"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git docker python colored-man)
+plugins=(vi-mode git docker python colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
+
+# vim
+export KEYTIMEOUT=1
+export EDITOR='vim'
+
+# history
+bindkey '^R' history-incremental-search-backward
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -61,25 +73,4 @@ alias vi="vim"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-
-# vim mode
-bindkey -v
-export KEYTIMEOUT=1
-export EDITOR='vim'
-# escape-v edits in vim
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
-# Sane backspace behavior in vim mode
-bindkey "^?" backward-delete-char
-
-# history
-bindkey '^R' history-incremental-search-backward
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "\e[A" history-beginning-search-backward-end
-bindkey "\e[B" history-beginning-search-forward-end
-
-
 
