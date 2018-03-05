@@ -8,6 +8,6 @@ echo $backup
 mkdir -p $backup
 
 for i in ${configs[@]}; do
-	cp -r ~/$i $backup
-	ln -sFf $dir/$i ~/$i
+	cp -rL ~/$i $backup || true
+	ln -sfn $dir/$i ~/$i
 done
