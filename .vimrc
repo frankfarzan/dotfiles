@@ -1,56 +1,12 @@
-" Setup Vundle:
-" Install the vundle plugin manually:
-" https://github.com/gmarik/vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-
-"=========================
-call vundle#begin()
-"=========================
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Snippets
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-" Defines my private snippet directory which is versioned.
-let g:UltiSnipsSnippetsDir="~/.vim/myUltiSnips"
-let g:UltiSnipsSnippetDirectories = ['myUltiSnips']
-
-" Go plugin
-Plugin 'fatih/vim-go'
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_types = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_auto_sameids = 1
-
-"=========================
-call vundle#end()
-"=========================
 
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
 syntax on " Syntax highlighting
 
 set bg=dark                     " I like dark backgrounds
+
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set laststatus=1                " Show status line iff 2+ windows
 set modeline                    " Allow file-embedded modelines

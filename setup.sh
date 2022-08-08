@@ -2,7 +2,7 @@
 set -eu
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-configs=(.zshrc .vimrc .tmux.conf .vim/myUltiSnips .oh-my-zsh/custom)
+configs=(.zshrc .vimrc .tmux.conf .oh-my-zsh/custom)
 backup=~/.configs.backup/$(date +%s)
 echo $backup
 mkdir -p $backup

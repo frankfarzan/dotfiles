@@ -1,5 +1,5 @@
-source ${HOME}/.profile
-source ${HOME}/.functions.sh
+#source ${HOME}/.profile
+#source ${HOME}/.functions.sh
 
 # Path to your oh-my-zsh installation.
 export ZSH=${HOME}/.oh-my-zsh
@@ -8,7 +8,8 @@ export ZSH=${HOME}/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="frankfarzan"
+#ZSH_THEME="frankfarzan"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -77,3 +78,9 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/frankf/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/frankf/tools/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/frankf/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/frankf/tools/google-cloud-sdk/completion.zsh.inc'; fi
