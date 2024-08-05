@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-set -eu
+set -eux
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 configs=(.zshrc .vimrc .tmux.conf .oh-my-zsh/custom)
