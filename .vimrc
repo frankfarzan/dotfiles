@@ -1,51 +1,44 @@
-set nocompatible
-filetype off
+" Basic settings
+set nocompatible              " Use Vim defaults, not vi
+set ttyfast                   " Indicate fast terminal connection for faster redraw
+set laststatus=1              " Show status line iff more than one window
+set modeline                  " Allow file-embedded modelines
+set hlsearch                  " Highlight search matches
+set showcmd                   " Show incomplete command in the last line
+set completeopt=menuone       " Completion menu even with one match
+set backspace=indent,eol,start" More powerful backspace
+set autowrite                 " Auto-write before :next, :make etc.
 
-" We have to turn this stuff back on if we want all of our features.
-filetype plugin indent on " Filetype auto-detection
-syntax on " Syntax highlighting
+" Indentation
+set tabstop=4                 " Number of spaces a <Tab> counts for
+set shiftwidth=4              " Size of an indent
+set expandtab                 " Use spaces instead of tabs
+set ai                        " Auto-indent new lines
 
-set bg=dark                     " I like dark backgrounds
+" Text layout
+set textwidth=78              " Line wrap width
 
-set ttyfast                     " Indicate fast terminal conn for faster redraw
-set laststatus=1                " Show status line iff 2+ windows
-set modeline                    " Allow file-embedded modelines
-set hlsearch                    " Highlight search terms
-set showcmd                     " Show last command
-set completeopt=menuone         " Show insertion menu for completions
-set tabstop=4                   " Tab width
-set shiftwidth=4                " How much to shift text
-set expandtab                   " Tabs are converted to spaces
-set ai                          " Auto-indent
-syn on                          " Syntax highlighting
-set textwidth=78                " Default text width
-set backspace=indent,eol,start  " Makes backspace key more powerful
-set autowrite                   " Automatically save before :next, :make etc.
+" UI
+colorscheme desert
 
-" markdown
+" Syntax and filetype
+syntax on
+filetype plugin indent on     " Enable filetype detection, plugins, and indenting
+
+" File-specific settings
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" go
-au FileType go setl tabstop=4
-au FileType go setl shiftwidth=4
-au FileType go setl textwidth=1000
-au FileType go setl number
-au FileType go setl nolist
+" Go-specific settings
+au FileType go setlocal tabstop=4 shiftwidth=4 textwidth=1000 number nolist
 
-" yaml
-au FileType yaml setl indentkeys-=<:>
-au FileType yaml setl tabstop=2
-au FileType yaml setl shiftwidth=2
-au FileType yaml setl expandtab
-au FileType yaml setl number
+" YAML-specific settings
+au FileType yaml setlocal indentkeys-=<:> tabstop=2 shiftwidth=2 expandtab number
 
-" Bindings for easy split nav
+" Mappings for easier window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" New files should open in insert mode
-au BufNewFile * startinsert
-
-colorscheme desert
+" Start insert mode in new files
+autocmd BufNewFile * startinsert
