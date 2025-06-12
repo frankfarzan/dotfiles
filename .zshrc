@@ -61,7 +61,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ----------------------------
-# OPERATING SYSTEM SPECIFIC SETTINGS
+# SHELL COMPLETIONS
 # ----------------------------
 case "$(uname)" in
   Darwin)
@@ -76,6 +76,9 @@ case "$(uname)" in
     ;;
 esac
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # ----------------------------
 # ALIASES
 # ----------------------------
@@ -84,3 +87,6 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias python="python3"
+alias pip="pip3"
+alias c="clear"
