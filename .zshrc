@@ -40,14 +40,19 @@ bindkey -M vicmd "j" down-line-or-beginning-search
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set the theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+if [[ -n $CURSOR_TRACE_ID ]]; then
+  ZSH_THEME="robbyrussell"  # Use a simpler theme in Cursor
+else
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+fi
+
 
 # Plugins
 plugins=(
-  vi-mode
-  git
   colored-man-pages
+  kubectl
+  git
+  vi-mode
   z
   zsh-navigation-tools
   zsh-autosuggestions
@@ -58,18 +63,27 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ ! -n $CURSOR_TRACE_ID ]]; then
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fi
+
+# ----------------------------
+# PATH
+# ----------------------------
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+
+export PATH="$HOME/.local/bin:$PATH"
 
 # ----------------------------
 # SHELL COMPLETIONS
 # ----------------------------
 case "$(uname)" in
   Darwin)
-    # macOS-specific settings
+    # Set up homebrew shell completion
     eval "$(/opt/homebrew/bin/brew shellenv)"
     ;;
   Linux)
-    # Linux-specific settings (currently empty)
     ;;
   *)
     echo "Unknown OS: $(uname)"
@@ -78,6 +92,9 @@ esac
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# Set up shell command completion for gcloud.
+if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
 
 # ----------------------------
 # ALIASES
@@ -90,3 +107,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias python="python3"
 alias pip="pip3"
 alias c="clear"
+alias k="kubectl"
+alias j="just"
+alias g="git"
+
