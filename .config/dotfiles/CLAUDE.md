@@ -11,15 +11,19 @@ path under `$HOME`.
 
 ## Fresh-machine setup
 
-- `Brewfile` — declarative list of developer tooling (`brew bundle`-format). Grows over
-  time; add a line and re-run. Idempotent.
-- `bootstrap.sh` — idempotent one-shot: installs Homebrew → runs `brew bundle` against
-  `Brewfile` → installs oh-my-zsh and the plugins/theme `.zshrc` expects. Run with
-  `./bootstrap.sh`. Deploying dotfiles into `$HOME` (the bare-repo checkout) stays manual
-  because it moves existing files — see `.README.md`.
+Setup/meta files live under `.config/dotfiles/` (a hidden dir) so they don't clutter
+`$HOME` when checked out — only actual runtime dotfiles sit at the home root.
 
-When adding a tool that a dotfile depends on, add it to `Brewfile` so a fresh machine
-stays reproducible.
+- `.config/dotfiles/Brewfile` — declarative list of developer tooling (`brew bundle`-format).
+  Grows over time; add a line and re-run. Idempotent.
+- `.config/dotfiles/bootstrap.sh` — idempotent one-shot: installs Homebrew → runs
+  `brew bundle` against `Brewfile` → installs oh-my-zsh and the plugins/theme `.zshrc`
+  expects. Run with `~/.config/dotfiles/bootstrap.sh` (it self-locates, so the adjacent
+  `Brewfile` resolves regardless of cwd). Deploying dotfiles into `$HOME` (the bare-repo
+  checkout) stays manual because it moves existing files — see `.README.md`.
+
+When adding a tool that a dotfile depends on, add it to `.config/dotfiles/Brewfile` so a
+fresh machine stays reproducible.
 
 ## Bare-repo management model
 
