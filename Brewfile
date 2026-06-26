@@ -1,0 +1,33 @@
+# Brewfile — developer tooling for a fresh macOS machine.
+#
+# Install / update everything (idempotent — re-run any time):
+#   brew bundle --file=~/Brewfile
+# or, while sitting in this repo:
+#   brew bundle
+#
+# This is meant to grow over time. Add a line, re-run `brew bundle`, commit.
+
+# --- Shell & prompt ---
+brew "zsh"
+brew "fzf"                       # fuzzy finder, sourced in .zshrc
+
+# --- Languages & runtimes ---
+brew "python"                    # python3 / pip3 (aliased to python/pip in .zshrc)
+brew "node"                      # node + npm
+brew "uv"                        # fast Python package / project manager
+
+# --- CLI tooling ---
+brew "git"
+brew "just"                      # command runner (aliased to `j`)
+brew "tmux"
+brew "vim"
+brew "kubectl"                   # aliased to `k`
+
+# --- GUI apps ---
+cask "iterm2"
+cask "font-meslo-lg-nerd-font"   # recommended glyph font for powerlevel10k
+
+# --- Optional / uncomment as needed ---
+# cask "google-cloud-sdk"        # gcloud; .zshrc also probes /opt/google-cloud-sdk
+# cask "visual-studio-code"
+# cask "docker"
