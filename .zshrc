@@ -70,8 +70,8 @@ fi
 # ----------------------------
 # PATH
 # ----------------------------
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+# The next line updates PATH for the Google Cloud SDK (installed via `brew install --cask gcloud-cli`).
+if [ -f "${HOMEBREW_PREFIX:-/opt/homebrew}/share/google-cloud-sdk/path.zsh.inc" ]; then . "${HOMEBREW_PREFIX:-/opt/homebrew}/share/google-cloud-sdk/path.zsh.inc"; fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -94,7 +94,7 @@ esac
 source <(fzf --zsh)
 
 # Set up shell command completion for gcloud.
-if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "${HOMEBREW_PREFIX:-/opt/homebrew}/share/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOMEBREW_PREFIX:-/opt/homebrew}/share/google-cloud-sdk/completion.zsh.inc"; fi
 
 # ----------------------------
 # ALIASES
