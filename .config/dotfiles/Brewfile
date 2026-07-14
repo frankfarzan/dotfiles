@@ -22,14 +22,19 @@ brew "just"                      # command runner (aliased to `j`)
 brew "tmux"
 brew "vim"
 brew "kubectl"                   # aliased to `k`
+brew "kustomize"
+brew "helm"
 brew "opentofu"
 brew "firebase-cli"
 
-# --- GUI apps ---
+# --- GUI dev tools ---
+cask "gcloud-cli"        # gcloud; .zshrc also probes /opt/google-cloud-sdk
+cask "visual-studio-code"
+cask "docker-desktop"
 cask "iterm2"
 cask "font-meslo-lg-nerd-font"   # recommended glyph font for powerlevel10k
 
-# --- Optional / uncomment as needed ---
-cask "gcloud-cli"        # gcloud; .zshrc also probes /opt/google-cloud-sdk
-cask "visual-studio-code"
-# cask "docker"
+# --- GUI apps ---
+cask "vlc"
+cask "obs"
+
