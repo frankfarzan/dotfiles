@@ -9,24 +9,25 @@
 
 # --- Shell & prompt ---
 brew "zsh"
-brew "fzf"                       # fuzzy finder, sourced in .zshrc
+brew "fzf"
 
 # --- Languages & runtimes ---
-brew "python"                    # python3 / pip3 (aliased to python/pip in .zshrc)
-brew "node"                      # node + npm
-brew "uv"                        # fast Python package / project manager
+brew "python"
+brew "node"
+brew "uv"
 brew "go"
 
 # --- CLI tooling ---
 brew "git"
-brew "just"                      # command runner (aliased to `j`)
+brew "just"
 brew "tmux"
 brew "vim"
-brew "kubectl"                   # aliased to `k`
+brew "kubectl"
 brew "kustomize"
 brew "helm"
 brew "opentofu"
 brew "firebase-cli"
+brew "ffmpeg"
 
 # --- GUI dev tools ---
 cask "gcloud-cli"        # gcloud; .zshrc also probes /opt/google-cloud-sdk
